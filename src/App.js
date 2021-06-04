@@ -1,9 +1,12 @@
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero";
 
 function App() {
   return (
-    <div>
-      Blogr!!
-    </div>
+    <>
+      <Header></Header>
+      <Hero></Hero>
+    </>
   );
 }
 
