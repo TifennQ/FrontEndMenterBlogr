@@ -6,6 +6,12 @@ import SideDrawer from './SideDrawer'
 const useStyles = makeStyles((theme) => ({
     appBar: {
         boxShadow: 'none'
+    },
+    headerContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '10%'
     }
 }))
 
@@ -24,7 +30,7 @@ const Header = () => {
     return (
         <AppBar className={classes.appBar} position="fixed" color="transparent">
             <Toolbar>
-                <Container>
+                <Container className={classes.headerContainer}>
                     <IconButton disableRipple edge="start" aria-label="home">
                         <div>
                             <img src={logo} alt="Logo"/>
