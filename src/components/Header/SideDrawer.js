@@ -1,5 +1,5 @@
 import { Drawer, makeStyles, List, ListItem, ListItemText } from '@material-ui/core'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useRef} from 'react'
 import burgerMenu from '../../images/icon-hamburger.svg'
 import iconClose from '../../images/icon-close.svg'
 import iconArrow from '../../images/icon-arrow-dark.svg'
@@ -36,32 +36,66 @@ const useStyles = makeStyles((theme) => ({
     },
     clickedArrow: {
         transform: 'rotate(180deg)'
-    }
+    },
+    selectedText: {
+        color: "#617486"
+    },
+    subLinksContainer: {
+        backgroundColor: "#EFEFF1",
+        color: "#617486",
+        marginLeft: "10%",
+        marginRight: "10%",
+        borderRadius: '5px',
+        paddingTop: "5%",
+        paddingBottom: "5%",
+    },
 }))
 
 
-const SideDrawer = ({navLinks}) => {
+const SideDrawer = ({navLinks, navSubLinks}) => {
     const classes = useStyles()
     const [state, setState] = useState({ left: false })
     const [linkClickedId, setLinkClickedId] = useState(0)
     const handleClickLink = (id) => {
-        setLinkClickedId(id)
+        if(id === linkClickedId) {
+            setLinkClickedId(0)
+
+        }
+        else {
+            setLinkClickedId(id)
+            //add transition
+        }
     }
+
 
     const sideDrawerList = anchor => (
         <div
             className={classes.drawer}
             role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
+            // onClick={toggleDrawer(anchor, false)}
+            // onKeyDown={toggleDrawer(anchor, false)}
         >
             <List className={classes.drawerList} component="nav">
                 {navLinks.map(({id, title}) => (
                     <div onClick={() => handleClickLink(id, "anchor")} className={classes.links} key={id}>
-                        <ListItem className={classes.listItem} button>
-                            <ListItemText className={classes.listItemText} primary={title}></ListItemText>
+                        <ListItem disableRipple className={classes.listItem} button>
+                            <ListItemText className={`${linkClickedId === id ? `${classes.listItemText} ${classes.selectedText}` : `${classes.listItemText}` }`}  primary={title}></ListItemText>
                             <img className={`${linkClickedId === id ? `${classes.clickedArrow}` : null}`} src={iconArrow} alt="iconArrow"/>
                         </ListItem>
+                        {
+                            id === linkClickedId && 
+                            <div className={classes.subLinksContainer} onClick={toggleDrawer(anchor, false)}>
+                                {
+                                    navSubLinks.map(({id, title}) => (
+                                        <div key={id}>
+                                            <ListItem className={classes.listItem} button>
+                                                <ListItemText className={classes.listItemText} primary={title}></ListItemText>
+                                            </ListItem>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        }
                     </div>
                 ))}
             </List>
@@ -69,7 +103,8 @@ const SideDrawer = ({navLinks}) => {
     )
 
     const toggleDrawer = (anchor, open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        console.log(event)
+        if ((event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift'))) {
         return;
         }
 

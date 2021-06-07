@@ -48,7 +48,7 @@ const Header = () => {
                         </List>
                     </Hidden>
                     <Hidden mdUp>
-                        <SideDrawer navLinks={navLinks}/>
+                        <SideDrawer navLinks={navLinks} navSubLinks={navSubLinks}/>
                     </Hidden>
                 </Container>
             </Toolbar>
