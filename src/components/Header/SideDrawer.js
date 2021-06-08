@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         top: '18vh',
         left: '10vw',
         width: '80vw',
-        height: '70vh',
+        height: 'auto',
         borderRadius: '8px'
     },
     clickedArrow: {
@@ -49,6 +49,28 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "5%",
         paddingBottom: "5%",
     },
+    bar: {
+        width: "80%",
+        height: "1px",
+        backgroundColor: "#EFEFF1",
+        marginLeft: "10%",
+        marginRight: "10%",
+        marginTop: "5%"
+    },
+    drawerBottom: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+    },
+    signup: {
+        cursor: "pointer",
+        color: "white",
+        background: 'linear-gradient(bottom right, hsl(353, 100%, 62%), hsl(13, 100%, 72%))',
+        borderRadius: "50px",
+        border: "none",
+        padding: "5% 10% 5% 10%",
+        marginBottom: "10%"
+    }
 }))
 
 
@@ -116,6 +138,12 @@ const SideDrawer = ({navLinks, navSubLinks}) => {
             <img onClick={toggleDrawer("left", true)} className={classes.logoImage} src={`${state.left ? `${iconClose}` : `${burgerMenu}` }`} alt="Mobile burger menu"/>
             <Drawer anchor="left" open={state.left} onOpen={toggleDrawer("left", true)} classes={{ paper: classes.paper}} onClose={toggleDrawer("left", false)}>
                 {sideDrawerList("left")}
+                <div className={classes.drawerBottom}>
+                    <div className={classes.bar}></div>
+                    <p className={classes.login}>Login</p>
+                    <button className={classes.signup}>Sign Up</button>
+                </div>
+
             </Drawer>
         </>
     )
