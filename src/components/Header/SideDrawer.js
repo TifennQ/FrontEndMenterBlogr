@@ -1,4 +1,4 @@
-import { Drawer, makeStyles, List, ListItem, ListItemText } from '@material-ui/core'
+import { Drawer, makeStyles, List, ListItem, ListItemText, Typography, Button } from '@material-ui/core'
 import React, {useState, useRef} from 'react'
 import burgerMenu from '../../images/icon-hamburger.svg'
 import iconClose from '../../images/icon-close.svg'
@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         alignItems: "center"
     },
+    login: {
+        marginTop: "5%"
+    },
     signup: {
         cursor: "pointer",
         color: "white",
@@ -69,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "50px",
         border: "none",
         padding: "5% 10% 5% 10%",
+        marginTop: "5%",
         marginBottom: "10%"
     }
 }))
@@ -140,8 +144,8 @@ const SideDrawer = ({navLinks, navSubLinks}) => {
                 {sideDrawerList("left")}
                 <div className={classes.drawerBottom}>
                     <div className={classes.bar}></div>
-                    <p className={classes.login}>Login</p>
-                    <button className={classes.signup}>Sign Up</button>
+                    <Typography className={classes.login}>Login</Typography>
+                    <Button className={classes.signup}>Sign Up</Button>
                 </div>
 
             </Drawer>
