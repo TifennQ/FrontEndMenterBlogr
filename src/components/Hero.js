@@ -2,7 +2,7 @@ import { Button, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
 import bgPattern from '../images/bg-pattern-intro.svg'
 
-const useStyles = makeStyles((them) => ({
+const useStyles = makeStyles((theme) => ({
     bgImageContainer: {
         background: 'linear-gradient(bottom right, hsl(353, 100%, 62%), hsl(13, 100%, 72%))',
         borderBottomLeftRadius: '50px',
@@ -12,7 +12,10 @@ const useStyles = makeStyles((them) => ({
         width: '100%',
         transform: 'scale(3)',
         zIndex: "80",
-        position: "relative"
+        position: "relative",
+        [theme.breakpoints.up('sm')]: {
+            transform: "scale(2) translateY(-15%) translateX(15%)"
+        }
     },
     heroContainer: {
         zIndex: "99",
@@ -30,6 +33,10 @@ const useStyles = makeStyles((them) => ({
         },
         "& h2": {
             marginBottom: "10%"
+        },
+        [theme.breakpoints.up('sm')]: {
+            marginTop: "-85%",
+            marginBottom: "10%"
         }
     },
     heroPara: {
@@ -39,6 +46,9 @@ const useStyles = makeStyles((them) => ({
         width: "100%",
         display: "flex",
         justifyContent: "space-around",
+        [theme.breakpoints.up('sm')]: {
+            width: "30%"
+        },
         "& span": {
             textTransform: "capitalize",
             fontWeight: "bold"
@@ -47,20 +57,37 @@ const useStyles = makeStyles((them) => ({
             borderRadius: "50px",
             paddingTop: "5%",
             paddingBottom: "5%",
+            transition: "all 300ms ease-in-out",
+            [theme.breakpoints.up('sm')]: {
+                paddingTop: "2%",
+                paddingBottom: "2%",
+            }
         },
         "& button:first-child": {
             backgroundColor: "white",
-            color: "hsl(356, 100%, 66%)"
+            color: "hsl(356, 100%, 66%)",
+            [theme.breakpoints.up('sm')]: {
+                "&:hover": {
+                    color: "white",
+                    background: "hsl(355, 100%, 74%)"
+                }
+            }
         },
         "& button:last-child": {
             borderColor: "white",
-            color: "white"
+            color: "white",
+            [theme.breakpoints.up('sm')]: {
+                "&:hover": {
+                    background: "white",
+                    color: "hsl(355, 100%, 74%)"
+                }
+            }
         }
 
     }
 }))
 
-const Hero = () => {
+const Hero = ({isDesktop}) => {
     const classes = useStyles()
     return (
         <>
@@ -68,7 +95,7 @@ const Hero = () => {
             <img className={classes.bgImage} src={bgPattern} alt="Mobile Hero"/>
             <div className={classes.heroContainer}>
                 <div className={classes.heroPara}>
-                    <Typography variant="h4" component="h1">A modern publishing platform</Typography>
+                    <Typography variant={`${isDesktop ? "h2" : "h4"}`}  component="h1">A modern publishing platform</Typography>
                     <Typography variant="body2" component="h2">Grow your audience and build your online brand</Typography>
                 </div>
                 <div className={classes.heroButtons}>
