@@ -63,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center"
     },
     login: {
-        marginTop: "5%"
+        marginTop: "5%",
+        cursor: "pointer"
     },
     signup: {
         cursor: "pointer",
@@ -78,20 +79,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const SideDrawer = ({navLinks, navSubLinks}) => {
+const SideDrawer = ({navLinks, navSubLinks, handleClickLink, linkClickedId}) => {
     const classes = useStyles()
     const [state, setState] = useState({ left: false })
-    const [linkClickedId, setLinkClickedId] = useState(0)
-    const handleClickLink = (id) => {
-        if(id === linkClickedId) {
-            setLinkClickedId(0)
-
-        }
-        else {
-            setLinkClickedId(id)
-            //add transition
-        }
-    }
 
 
     const sideDrawerList = anchor => (
