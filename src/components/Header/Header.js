@@ -19,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '10%',
         [theme.breakpoints.up('sm')]: {
             marginTop: '1%',
-          },
+        },
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'space-between'
+        },
     },
     clickedArrow: {
         transform: 'rotate(180deg)'
@@ -116,7 +119,7 @@ const Header = () => {
 
 
     return (
-        <AppBar className={classes.appBar} position="fixed" color="transparent">
+        <AppBar className={classes.appBar} position="absolute" color="transparent">
             <Toolbar>
                 <Container className={classes.headerContainer}>
                     <IconButton disableRipple edge="start" aria-label="home">

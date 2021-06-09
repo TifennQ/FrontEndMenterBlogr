@@ -2,6 +2,7 @@ import Header from "./components/Header/Header";
 import Hero from "./components/Hero";
 import useWindowDimensions from './getWindowDimensions'
 import React, { useState, useEffect} from 'react'
+import Section1 from "./components/Section1";
 
 function App() {
   const {width, height} = useWindowDimensions()
@@ -18,7 +19,8 @@ function App() {
   return (
     <>
       <Header></Header>
-      <Hero isDesktop={isDesktop} ></Hero>
+      <Hero isDesktop={isDesktop}></Hero>
+      <Section1 isDesktop={isDesktop}></Section1>
     </>
   );
 }
