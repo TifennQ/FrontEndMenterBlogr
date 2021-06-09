@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import useWindowDimensions from './getWindowDimensions'
 import React, { useState, useEffect} from 'react'
 import Section1 from "./components/Section1";
+import Section2 from "./components/Section2";
 
 function App() {
   const {width, height} = useWindowDimensions()
@@ -21,6 +22,7 @@ function App() {
       <Header></Header>
       <Hero isDesktop={isDesktop}></Hero>
       <Section1 isDesktop={isDesktop}></Section1>
+      <Section2 isDesktop={isDesktop}></Section2>
     </>
   );
 }
