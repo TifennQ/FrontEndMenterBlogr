@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
     bgImage: {
         width: '100%',
-        transform: 'scale(3)',
+        transform: 'scale(3.2) translateY(10%) translateX(12%)',
         zIndex: "80",
         position: "relative",
         [theme.breakpoints.up('sm')]: {
