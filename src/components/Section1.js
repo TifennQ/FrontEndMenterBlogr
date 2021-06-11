@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: "20%",
+        backgroundColor: 'white',
+        zIndex: "99",
+        position: "relative",
         [theme.breakpoints.up('sm')]: {
             marginTop: "8%",
         }
