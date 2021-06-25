@@ -6,19 +6,16 @@ import bgCircles from '../images/bg-pattern-circles.svg'
 const useStyles = makeStyles((theme) => ({
     section2_mainContainer: {
         marginTop: "20%",
-        paddingBottom: "20%",
+        paddingBottom: "25%",
         paddingLeft: "10%",
         paddingRight: "10%",
         textAlign: 'center',
         position: "relative",
         backgroundColor: 'hsl(237, 17%, 21%)',
         borderRadius: "0 0 0 100px",
-        // backgroundImage: `url(${bgCircles})`,
-        // backgroundRepeat: "no-repeat",
-        // backgroundPosition: 'center',
-        // backgroundSize: '200% 150%',
         [theme.breakpoints.up('sm')]: {
             marginTop: "8%",
+            paddingBottom: "0%",
         }
     },
     bgCircles: {
@@ -28,7 +25,12 @@ const useStyles = makeStyles((theme) => ({
         transform: 'scale(1.8)',
         "& img": {
             width: "100%",
-        }
+        },
+        [theme.breakpoints.up('sm')]: {
+            transform: 'scale(0.8)',
+            left: "-27%",
+            top: "-130%"
+        },
     },
     backgroundWhite: {
         position: "absolute",
@@ -38,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
         height: "30%",
         left: "0",
         top: "-10%",
+        [theme.breakpoints.up('sm')]: {
+        },
         "&:after": {
             content: '""',
             backgroundColor: "white",
@@ -64,10 +68,11 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         zIndex: "99",
         color: "hsl(0, 0%, 100%)",
+        marginTop: "12%"
     },
     para: {
         color: "hsl(0, 0%, 100%)",
-        marginTop: "5%"
+        marginTop: "8%",
     },
     phones: {
         position: 'relative',
@@ -76,6 +81,11 @@ const useStyles = makeStyles((theme) => ({
         "& img": {
             width: "100%",
         }
+    },
+    containerContent: {
+        [theme.breakpoints.up('sm')]: {
+            display: "flex"
+        },
     }
 
 }))
@@ -92,17 +102,19 @@ const Section2 = ({isDesktop}) => {
             <div className={classes.bgCircles}>
                 <img src={bgCircles} alt="Phones image" />
             </div>
-            <div className={classes.phones}>
-                <img src={phones} alt="Phones image" />
+            <div className={classes.containerContent}>
+                <div className={classes.phones}>
+                    <img src={phones} alt="Phones image" />
+                </div>
+                <div className={classes.textes}>
+                    <Typography className={classes.titles} variant={`${isDesktop ? "h4" : "h4"}`} component="h3">State of the Art Infrastructure</Typography>
+                    <Typography className={classes.para} variant="body1" component="p">  
+                        With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
+                        This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.
+                    </Typography>
+                </div>
             </div>
-            <div className={classes.textes}>
-                <Typography className={classes.titles} variant={`${isDesktop ? "h4" : "h5"}`} component="h3">State of the Art Infrastructure</Typography>
-                <Typography className={classes.para} variant="body1" component="p">  
-                    With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
-                    This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.
-                </Typography>
-                {/* TODO : rogner image png */}
-            </div>
+
           </div>
         </>
     )
